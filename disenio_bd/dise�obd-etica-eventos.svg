@@ -27,9 +27,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.49497475"
-     inkscape:cx="1313.6653"
-     inkscape:cy="-51.853735"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="1413.8702"
+     inkscape:cy="-244.49463"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -37,7 +37,9 @@
      inkscape:window-height="988"
      inkscape:window-x="-8"
      inkscape:window-y="32"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="1"
+     showguides="true"
+     inkscape:guide-bbox="true" />
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -83,13 +85,13 @@
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
     <rect
-       style="opacity:0.56910568;fill:#fff3b1;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:3.42442799;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       style="opacity:0.56910568;fill:#fff3b1;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:3.96757579;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
        id="rect3809-6-4-2"
        width="428.59137"
-       height="181.71086"
+       height="243.92439"
        x="750.40002"
-       y="164.07835"
-       ry="8.8712225" />
+       y="101.86483"
+       ry="11.908521" />
     <rect
        style="opacity:0.56910568;fill:#fff3b1;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4.31474352;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
        id="rect3809-6-4"
@@ -143,14 +145,14 @@
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="766.23511"
-       y="208.4664"
+       x="757.14374"
+       y="151.89786"
        id="text2989"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan2991"
-         x="766.23511"
-         y="208.4664">detalle_asistencia</tspan></text>
+         x="757.14374"
+         y="151.89786">detalle_asistencia</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
@@ -165,41 +167,37 @@
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="145.49382"
-       y="270.92252"
+       x="135.39229"
+       y="291.12558"
        id="text2997"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
-         x="145.49382"
-         y="270.92252"
+         x="135.39229"
+         y="291.12558"
          id="tspan3007">* dni_asi</tspan><tspan
          sodipodi:role="line"
-         x="145.49382"
-         y="320.92252"
+         x="135.39229"
+         y="341.12558"
          id="tspan3027">* fechaRegistro_asi</tspan><tspan
          sodipodi:role="line"
-         x="145.49382"
-         y="370.92252"
+         x="135.39229"
+         y="391.12558"
          id="tspan3001">* nombres_asi</tspan><tspan
          sodipodi:role="line"
-         x="145.49382"
-         y="420.92252"
+         x="135.39229"
+         y="441.12558"
          id="tspan3003">* apellidos_asi</tspan><tspan
          sodipodi:role="line"
-         x="145.49382"
-         y="470.92252"
+         x="135.39229"
+         y="491.12558"
          id="tspan3011">º correo_asi</tspan><tspan
          sodipodi:role="line"
-         x="145.49382"
-         y="520.92249"
-         id="tspan3189">* tipo_asi</tspan><tspan
+         x="135.39229"
+         y="541.12555"
+         id="tspan4252">* tipo_asi</tspan><tspan
          sodipodi:role="line"
-         x="145.49382"
-         y="570.92249"
-         id="tspan4252">* certificado_asi</tspan><tspan
-         sodipodi:role="line"
-         x="145.49382"
-         y="620.92249"
+         x="135.39229"
+         y="591.12555"
          id="tspan3005" /></text>
     <text
        xml:space="preserve"
@@ -261,29 +259,33 @@
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="829.13849"
-       y="269.01486"
+       x="813.98621"
+       y="217.49709"
        id="text3037"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3039"
-         x="829.13849"
-         y="269.01486">* id_detasi</tspan><tspan
+         x="813.98621"
+         y="217.49709">* id_detasi</tspan><tspan
          sodipodi:role="line"
-         x="829.13849"
-         y="319.01486"
-         id="tspan4008">* hora_detasi</tspan></text>
+         x="813.98621"
+         y="267.49707"
+         id="tspan4008">* hora_detasi</tspan><tspan
+         sodipodi:role="line"
+         x="813.98621"
+         y="317.49707"
+         id="tspan3199">* certificado_detasi</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="114.46427"
-       y="264.32648"
+       x="106.38305"
+       y="282.50922"
        id="text3843"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3845"
-         x="114.46427"
-         y="264.32648">#</tspan></text>
+         x="106.38305"
+         y="282.50922">#</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
@@ -308,20 +310,20 @@
          y="745.5885">#</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       d="m 751.83855,222.65969 424.28565,0"
+       d="m 751.83855,172.65969 424.28565,0"
        id="path3811-2-5-1"
        inkscape:connector-curvature="0" />
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="786.94629"
-       y="267.64792"
+       x="776.84479"
+       y="216.13014"
        id="text3843-5-8-8"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3845-7-7-3"
-         x="786.94629"
-         y="267.64792">#</tspan></text>
+         x="776.84479"
+         y="216.13014">#</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:10,20;marker-end:none;stroke-dashoffset:0"
        d="m 513.15749,268.48381 239.40616,0"
@@ -366,7 +368,7 @@
          sodipodi:role="line"
          x="1548.5714"
          y="1555.2194"
-         id="tspan3267">versión: 0.3.2</tspan><tspan
+         id="tspan3267">versión: 0.3.3</tspan><tspan
          sodipodi:role="line"
          x="1548.5714"
          y="1605.2194"
@@ -458,11 +460,11 @@
          sodipodi:role="line"
          x="845.66962"
          y="797.94812"
-         id="tspan4235">* fecha-inicio_con</tspan><tspan
+         id="tspan4235">* fechaInicio_con</tspan><tspan
          sodipodi:role="line"
          x="845.66962"
          y="847.94812"
-         id="tspan4367">* fecha-fin_con</tspan><tspan
+         id="tspan4367">* fechaFin_con</tspan><tspan
          sodipodi:role="line"
          x="845.66962"
          y="897.94812"
