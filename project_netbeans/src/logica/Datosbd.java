@@ -49,7 +49,9 @@ public class Datosbd {
         bd.conectarEjecutar(strsql);
     }
     
-    public void addAsistente()
+    public void addAsistente(){
+        
+    }
     
     public static void main(String[] args) throws SQLException, ClassNotFoundException{
         Datosbd db = new Datosbd();
