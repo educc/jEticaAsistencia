@@ -26,6 +26,32 @@ public class Datosbd {
         bd = new Conexiondb(host,puerto,nombrebd,user,pass, Conexiondb.MYSQL);
     }
     
+    public Asistente indexOf(String dni) throws ClassNotFoundException, SQLException{
+        Asistente asis = new Asistente();
+        
+        String strsql;
+        String[] parametros = new String[1];
+        
+        strsql = "SELECT dni_asi, fechaRegistro_asi, nombres_asi, " +
+                " apellidos_asi, correo_asi, tipo_asi " +
+                " FROM asistente WHERE dni_asi like '?'";
+        parametros[0] = dni;
+                
+        strsql = SQLString.toquery(strsql, parametros);
+        ResultSet rs = bd.conectarConsultar(strsql);
+        while( rs.next() ){
+            asis.setDni( rs.getString("dni_asi"));
+            asis.setFechaRegistro( rs.getDate("fechaRegistro_asi"));
+            asis.setNombres( rs.getString("nombres_asi"));
+            asis.setApellidos( rs.getString("apellidos_asi"));
+            asis.setCorreo( rs.getString( "correo_asi"));
+            asis.setTipo( rs.getString("tipo_asi"));
+        }
+        bd.cerrarConexion();
+        
+        return asis;
+    }
+    
     public void addEvento(Evento e) throws ClassNotFoundException, SQLException{
         /*String strsql;
         strsql = "INSERT INTO evento(nombre_uni,region_uni) ";
@@ -42,14 +68,15 @@ public class Datosbd {
         String strsql;
         String[] parametros = new String[2];
         
-        strsql = "INSERT INTO universidad(nombre_uni, region_uni)";
-        strsql += " VALUES('?','?')";
+        strsql = "INSERT INTO universidad(nombre_uni, region_uni)" +
+                 " VALUES('?','?')";
         
         parametros[0] = u.getNombre();
         parametros[1] = u.getRegion();
         
         strsql = SQLString.toquery(strsql, parametros);
         bd.conectarEjecutar(strsql);
+        
     }
     
     public void addAsistente(){
@@ -82,7 +109,7 @@ public class Datosbd {
             
             conferencias.add(c);
         }
-        
+        bd.cerrarConexion();
         return conferencias;
     }
     
@@ -107,7 +134,8 @@ public class Datosbd {
             e.setCostoProfesional( rs.getFloat( "costoProfesional_eve" ));
             
             eventos.add(e);
-        }        
+        }      
+        bd.cerrarConexion();
         return eventos;
     }
     
@@ -140,6 +168,7 @@ public class Datosbd {
             
             talleres.add(t);
         }
+        bd.cerrarConexion();
         return talleres;
     }
     

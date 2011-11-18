@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.UIManager;
 import logica.Datosbd;
 import logica.Evento;
 
@@ -113,6 +114,9 @@ public class MainFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
+                try{
+                UIManager.setLookAndFeel( UIManager.getSystemLookAndFeelClassName() );
+                }catch (Exception ex){}
                 new MainFrame().setVisible(true);
             }
         });

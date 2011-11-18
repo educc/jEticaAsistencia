@@ -15,7 +15,7 @@ public class Asistente {
     private String nombres;
     private String apellidos;
     private String correo;
-    private char tipo;
+    private String tipo;
     private Date fechaRegistro;
 
     public Asistente() {
@@ -23,7 +23,7 @@ public class Asistente {
         nombres = "";
         apellidos ="";
         correo = "";
-        tipo = 'a';
+        tipo = "a";
         fechaRegistro = new Date("1/1/1");
     }
 
@@ -33,7 +33,7 @@ public class Asistente {
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.correo = correo;
-        tipo = 'a';
+        tipo = "a";
     }
 
     
@@ -77,11 +77,11 @@ public class Asistente {
         this.nombres = nombres;
     }
 
-    public char getTipo() {
+    public String getTipo() {
         return tipo;
     }
 
-    public void setTipo(char tipo) {
+    public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 }
