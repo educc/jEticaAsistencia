@@ -69,7 +69,7 @@ create table asistente
 create table conferencia
 (
 	id_con					int not null primary key auto_increment,
-	tema_con				varchar(50) not null,
+	tema_con				varchar(150) not null,
 	fechaInicio_con				datetime not null,
 	fechaFin_con				datetime not null,
 	aforo_con				int not null,
@@ -96,15 +96,15 @@ create table asistencia_conferencia
 
 create table taller
 (
-	id_taller int not null primary key auto_increment,
-	tema_con				varchar(50) not null,
-	fechaInicio_con				datetime not null,
-	fechaFin_con				datetime not null,
-	aforo_con				int not null,
-	vacantes_con				int not null,
-	lugar_con				varchar(100) not null,
-	costoEstudiante_eve 			long not null,
-	costoProfesional_eve 			long not null,
+	id_tal					int not null primary key auto_increment,
+	tema_tal				varchar(50) not null,
+	fechaInicio_tal				datetime not null,
+	fechaFin_tal				datetime not null,
+	aforo_tal				int not null,
+	vacantes_tal				int not null,
+	lugar_tal				varchar(100) not null,
+	costoEstudiante_tal 			long not null,
+	costoProfesional_tal 			long not null,
 	id_eve					int not null references evento(id_eve),
 	id_pon					int not null references ponente(id_pon)
 );
@@ -133,3 +133,14 @@ INSERT INTO universidad(nombre_uni,sigla_uni,region_uni) VALUES('Nacional Pedro 
 INSERT INTO universidad(nombre_uni,sigla_uni,region_uni) VALUES('Católica Santo Toribio de Mogrovejo','USAT','Lambayeque');
 INSERT INTO universidad(nombre_uni,sigla_uni,region_uni) VALUES('Universidad de Lambayeque','UDL','Lambayeque');
 INSERT INTO universidad(nombre_uni,sigla_uni,region_uni) VALUES('Privada Juan Mejía Baca','','Lambayeque');
+/*ponentes*/
+INSERT INTO ponente(nombres_pon, apellidos_pon) VALUE('Gregorio','León');
+INSERT INTO ponente(nombres_pon, apellidos_pon) VALUE('Robert','Puican Gutierres');
+INSERT INTO ponente(nombres_pon, apellidos_pon) VALUE('Ivan','Uriarte Uriarte');
+/*eventos*/
+INSERT INTO evento(nombre_eve, fechaInicio_eve, fechaFin_eve, costoEstudiante_eve, costoProfesional_eve) VALUES('Llampageek','2011/11/18','2011/11/18',5,10);
+/*conferencias*/
+INSERT INTO conferencia(tema_con, fechaInicio_con, fechaFin_con, aforo_con, vacantes_con, lugar_con, id_eve, id_pon) VALUES('Firewall y Seguridad en Servidores','2011/11/18 10:00','2011/11/18 11:30',200,200,'USAT sala 803',1,1);
+INSERT INTO conferencia(tema_con, fechaInicio_con, fechaFin_con, aforo_con, vacantes_con, lugar_con, id_eve, id_pon) VALUES('Servidores de Alta disponibilidad web con Software Libre','2011/11/18 11:30','2011/11/18 13:00',200,200,'USAT sala 803',1,2);
+/*talleres*/
+INSERT INTO taller(tema_tal, fechaInicio_tal, fechaFin_tal, aforo_tal, vacantes_tal, lugar_tal,costoEstudiante_tal, costoProfesional_tal, id_eve, id_pon) VALUES('Desarrollo de aplicaciones web con MVC','2011/11/18 15:00','2011/11/18 18:00',40,40,'USAT laboratorio 418',5,10,1,3);
