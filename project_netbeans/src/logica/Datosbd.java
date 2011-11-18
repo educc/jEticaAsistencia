@@ -143,11 +143,48 @@ public class Datosbd {
         return talleres;
     }
     
-
+    /**
+     * 
+     * @param asis
+     * @param conf
+     * @param certificado 0 = no paga por certificado; 1 = paga por certificado
+     * @throws ClassNotFoundException
+     * @throws SQLException 
+     */
     
-    public void addAsistenciaConferencia(Asistente asis, Conferencia conf){
+    public void addAsistenciaConferencia
+            (Asistente asis, Conferencia conf, int certificado) 
+            throws ClassNotFoundException, SQLException
+    {
+        String strsql;
+        String[] parametros = new String[3];
         
+        strsql = "INSERT INTO asistencia_conferencia(dni_asi,id_con, certificado_detasi) " +
+                 " VALUES('?', ?, ?)";
+        parametros[0] = asis.getDni();
+        parametros[1] = String.valueOf( conf.getId() );
+        parametros[2] = String.valueOf( certificado);
+        
+        strsql = SQLString.toquery(strsql, parametros);
+        bd.conectarEjecutar(strsql);
     }
+    
+    public void addAsistenciaTaller
+            (Asistente asis, Taller tal, int certificado)
+            throws ClassNotFoundException, SQLException
+    {
+        String strsql;
+        String[] parametros = new String[3];
+        
+        strsql = "INSERT INTO asistencia_taller(dni_asi,id_tal, certificado_detasi) " +
+                 " VALUES('?', ?, ?)";
+        parametros[0] = asis.getDni();
+        parametros[1] = String.valueOf( tal.getId() );
+        parametros[2] = String.valueOf( certificado);
+        
+        strsql = SQLString.toquery(strsql, parametros);
+        bd.conectarEjecutar(strsql);
+    } 
     
     public static void main(String[] args) throws SQLException, ClassNotFoundException{
         Datosbd db = new Datosbd();
