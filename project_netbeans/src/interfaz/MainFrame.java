@@ -10,7 +10,13 @@
  */
 package interfaz;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import logica.Datosbd;
+import logica.Evento;
 
 /**
  *
@@ -18,12 +24,29 @@ import logica.Datosbd;
  */
 public class MainFrame extends javax.swing.JFrame {
     private Datosbd bd;
+    private List<Evento> eventos;
 
     /** Creates new form MainFrame */
     public MainFrame() {
         initComponents();
         this.setTitle( App.NAME + ": " + App.VERSION);
         bd = new Datosbd();
+        eventos = new ArrayList();
+        this.cargarEventos();
+    }
+    
+    private void cargarEventos(){
+        try {
+            eventos = bd.allEventos();
+            this.cmbEventos.removeAllItems();
+            for( Object obj : eventos){
+                cmbEventos.addItem(obj);
+            }
+        } catch (ClassNotFoundException ex) {
+            //Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            //Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /** This method is called from within the constructor to
@@ -38,13 +61,18 @@ public class MainFrame extends javax.swing.JFrame {
 
         cmdInscribir = new javax.swing.JButton();
         cmdAsistencia = new javax.swing.JButton();
+        cmbEventos = new javax.swing.JComboBox();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         cmdInscribir.setText("Inscribir al evento");
         cmdInscribir.setPreferredSize(new java.awt.Dimension(200, 50));
-        getContentPane().add(cmdInscribir, new java.awt.GridBagConstraints());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        getContentPane().add(cmdInscribir, gridBagConstraints);
 
         cmdAsistencia.setText("Registrar Asistencia");
         cmdAsistencia.setPreferredSize(new java.awt.Dimension(200, 50));
@@ -55,8 +83,18 @@ public class MainFrame extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 3;
         getContentPane().add(cmdAsistencia, gridBagConstraints);
+
+        cmbEventos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbEventos.setPreferredSize(new java.awt.Dimension(200, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        getContentPane().add(cmbEventos, gridBagConstraints);
+
+        jLabel1.setText("Evento");
+        getContentPane().add(jLabel1, new java.awt.GridBagConstraints());
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-416)/2, (screenSize.height-338)/2, 416, 338);
@@ -80,7 +118,9 @@ public class MainFrame extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox cmbEventos;
     private javax.swing.JButton cmdAsistencia;
     private javax.swing.JButton cmdInscribir;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

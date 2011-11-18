@@ -188,7 +188,11 @@ public class Datosbd {
     
     public static void main(String[] args) throws SQLException, ClassNotFoundException{
         Datosbd db = new Datosbd();
-        Universidad u = new Universidad("USAT", "LAMBAYEQUE");
-        db.addUniversidad(u);
+        /*Universidad u = new Universidad("USAT", "LAMBAYEQUE");
+        db.addUniversidad(u);*/
+        List<Evento> list = db.allEventos();
+        for( Object obj: list){
+            System.out.println(obj);
+        }
     }
 }

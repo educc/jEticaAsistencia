@@ -76,8 +76,8 @@ public class Conexiondb {
         return false;
     }
     
-    public boolean cerrarConexionTrans(){
-        return false;
+    public void cerrarConexionTrans() throws SQLException{
+        con.close();
     }
     
     //cancelar
@@ -88,7 +88,7 @@ public class Conexiondb {
                 Statement stmt = con.createStatement();
                 rs = stmt.executeQuery(strSql);
         }
-        con.close();
+        //con.close();
         return rs;
     }
     
@@ -96,7 +96,7 @@ public class Conexiondb {
         ResultSet rs = null;
         Statement stmt = con.createStatement();
         rs = stmt.executeQuery(strSql);
-        con.close();       
+        //con.close();       
         return rs;
     }
     

@@ -19,7 +19,9 @@ import logica.Datosbd;
  */
 public class DiaAsistencia extends javax.swing.JDialog {
     private Datosbd bd;
+    
     /** Creates new form FraAsistencia */
+    
     public DiaAsistencia( JFrame parent, Datosbd bdx) {
         super(parent);
         initComponents();
