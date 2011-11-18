@@ -79,8 +79,25 @@ public class Datosbd {
         
     }
     
-    public void addAsistente(){
+    public void addAsistente(Asistente asis) 
+            throws ClassNotFoundException, SQLException
+    {
+        String strsql;
+        String[] parametros = new String[5];
         
+        strsql = "INSERT INTO asistente " +
+                " (dni_asi, nombres_asi, apellidos_asi, correo_asi, tipo_asi, fechaRegistro_asi) " +
+                " VALUES ('?','?','?','?','?', now() )";
+        
+        parametros[0] = asis.getDni();
+        parametros[1] = asis.getNombres();
+        parametros[2] = asis.getApellidos();
+        parametros[3] = asis.getCorreo();
+        parametros[4] = asis.getTipo();
+        
+        
+        strsql = SQLString.toquery(strsql, parametros);
+        bd.conectarEjecutar(strsql);
     }
     
     public List<Conferencia> allConferencias(Evento e) throws ClassNotFoundException, SQLException{
@@ -225,3 +242,4 @@ public class Datosbd {
         }
     }
 }
+
