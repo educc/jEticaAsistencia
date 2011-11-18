@@ -10,20 +10,40 @@ import java.util.Date;
  *
  * @author edward
  */
-public class Evento {
+public class Taller {
     private int id;
-    private String nombre;
+    private String tema;
     private Date fechaInicio;
     private Date fechaFin;
+    private int aforo;
+    private int vacantes;
+    String lugar;
     private float costoEstudiante;
     private float costoProfesional;
     
+    public Taller(){
+        id = -1;
+        tema = "";
+        fechaInicio = fechaFin = new Date("1/1/1");
+        aforo = vacantes = 0;
+        costoEstudiante = costoProfesional = 0;
+        lugar = "";
+    }
 
-    public Evento() {
-       this.id = -1;
-       this.nombre = "";
-       fechaInicio = fechaFin = new Date("1/1/1");
-       costoEstudiante = costoProfesional = 0;
+    public String getLugar() {
+        return lugar;
+    }
+
+    public void setLugar(String lugar) {
+        this.lugar = lugar;
+    }
+
+    public int getAforo() {
+        return aforo;
+    }
+
+    public void setAforo(int aforo) {
+        this.aforo = aforo;
     }
 
     public float getCostoEstudiante() {
@@ -66,11 +86,22 @@ public class Evento {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getTema() {
+        return tema;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setTema(String tema) {
+        this.tema = tema;
     }
+
+    public int getVacantes() {
+        return vacantes;
+    }
+
+    public void setVacantes(int vacantes) {
+        this.vacantes = vacantes;
+    }
+    
+    
+    
 }
