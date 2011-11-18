@@ -18,7 +18,7 @@ public class Datosbd {
     private Conexiondb bd;
     
     public Datosbd(){
-        String host = "192.168.1.37";
+        String host = "localhost";
         int puerto = 3306;
         String nombrebd = "eventos";
         String user = "root";
