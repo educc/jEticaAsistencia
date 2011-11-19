@@ -10,6 +10,6 @@ package interfaz;
  */
 public class App {
     public static final String NAME = "jEticaAsistencia";
-    public static final String VERSION = "0.1 alpha";
+    public static final String VERSION = "0.1 Beta1";
     public static final String DEVELOPERS = "Cacho Casas, Edward y Alza Meza, Arturo";
 }
