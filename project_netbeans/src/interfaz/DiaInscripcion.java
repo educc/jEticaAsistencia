@@ -3,8 +3,6 @@ package interfaz;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import logica.Asistente;
@@ -12,16 +10,31 @@ import logica.Datosbd;
 import logica.Universidad;
 
 public class DiaInscripcion extends javax.swing.JDialog {
-private Datosbd bd;
- private List<Universidad> universidad;
+    private Datosbd bd;
+    private List<Universidad> universidad;
     /** Creates new form DiaInscripcion */
     public DiaInscripcion( JFrame parent, Datosbd bdx) {
         super(parent);
         initComponents();
         this.setTitle( App.NAME );
         bd = bdx;
-          universidad = new ArrayList();
+        universidad = new ArrayList();
         this.cargarUniversidad();
+    }
+    
+    private boolean validar(){
+        boolean correcto = false;
+        if( !txtApellidos.getText().isEmpty() &&
+            !txtCorreo.getText().isEmpty() && 
+            !txtNombre.getText().isEmpty() &&
+            !txtDni.getText().isEmpty() )
+        {
+            correcto = true;
+        }else{
+            JOptionPane.showMessageDialog(this,"Debe llenar todos los campos",App.NAME 
+                    , JOptionPane.INFORMATION_MESSAGE);
+        }
+        return correcto;
     }
   
     private void guardar()
@@ -62,192 +75,181 @@ private Datosbd bd;
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        txtDni = new javax.swing.JTextField();
+        cmdAceptar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        txtNombre = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
+        txtDni = new javax.swing.JTextField();
+        cmdNuevaUniversidad = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         txtApellidos = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        cmbTipo = new javax.swing.JComboBox();
-        jLabel8 = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
         txtCorreo = new javax.swing.JTextField();
         cmbUniversidades = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
-        cmdAceptar = new javax.swing.JButton();
+        cmbTipo = new javax.swing.JComboBox();
+        jLabel8 = new javax.swing.JLabel();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Asistente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, new java.awt.Color(0, 0, 255)));
+        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        jLabel1.setText("Dni:");
-
-        jLabel6.setText("Nombre:");
-
-        jLabel7.setText("Apellidos:");
-
-        jLabel9.setText("Tipo:");
-
-        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Estudiante", "Profesional" }));
-
-        jLabel8.setText("Correo:");
-
-        txtCorreo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCorreoActionPerformed(evt);
-            }
-        });
-
-        cmbUniversidades.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " " }));
-        cmbUniversidades.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbUniversidadesActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setText("Universidad:");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(cmbUniversidades, 0, 252, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                                .addComponent(jLabel9)
-                                .addGap(18, 18, 18)
-                                .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtCorreo, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtApellidos, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)))))
-                .addGap(46, 46, 46))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addGap(12, 12, 12)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(cmbUniversidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-
-        cmdAceptar.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        cmdAceptar.setForeground(new java.awt.Color(0, 51, 153));
+        cmdAceptar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         cmdAceptar.setText("Guardar");
+        cmdAceptar.setPreferredSize(new java.awt.Dimension(107, 50));
         cmdAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmdAceptarActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        jPanel1.add(cmdAceptar, gridBagConstraints);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(112, 112, 112)
-                        .addComponent(cmdAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(21, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(cmdAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(290, 290, 290))
-        );
+        jLabel6.setText("Nombre:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        jPanel1.add(jLabel6, gridBagConstraints);
+
+        txtDni.setPreferredSize(new java.awt.Dimension(200, 30));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 0);
+        jPanel1.add(txtDni, gridBagConstraints);
+
+        cmdNuevaUniversidad.setText("Nuevo...");
+        cmdNuevaUniversidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdNuevaUniversidadActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.insets = new java.awt.Insets(0, 20, 0, 0);
+        jPanel1.add(cmdNuevaUniversidad, gridBagConstraints);
+
+        jLabel1.setText("Dni:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        jPanel1.add(jLabel1, gridBagConstraints);
+
+        txtApellidos.setPreferredSize(new java.awt.Dimension(200, 30));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 0);
+        jPanel1.add(txtApellidos, gridBagConstraints);
+
+        jLabel9.setText("Tipo:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        jPanel1.add(jLabel9, gridBagConstraints);
+
+        txtNombre.setPreferredSize(new java.awt.Dimension(200, 30));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 0);
+        jPanel1.add(txtNombre, gridBagConstraints);
+
+        jLabel7.setText("Apellidos:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        jPanel1.add(jLabel7, gridBagConstraints);
+
+        txtCorreo.setPreferredSize(new java.awt.Dimension(200, 30));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 0);
+        jPanel1.add(txtCorreo, gridBagConstraints);
+
+        cmbUniversidades.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " " }));
+        cmbUniversidades.setPreferredSize(new java.awt.Dimension(200, 30));
+        cmbUniversidades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbUniversidadesActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 0);
+        jPanel1.add(cmbUniversidades, gridBagConstraints);
+
+        jLabel2.setText("Universidad:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        jPanel1.add(jLabel2, gridBagConstraints);
+
+        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Estudiante", "Profesional" }));
+        cmbTipo.setPreferredSize(new java.awt.Dimension(200, 30));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 0);
+        jPanel1.add(cmbTipo, gridBagConstraints);
+
+        jLabel8.setText("Correo:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        jPanel1.add(jLabel8, gridBagConstraints);
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-457)/2, (screenSize.height-376)/2, 457, 376);
+        setBounds((screenSize.width-399)/2, (screenSize.height-350)/2, 399, 350);
     }// </editor-fold>//GEN-END:initComponents
-
-private void txtCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoActionPerformed
-// TODO add your handling code here:
-}//GEN-LAST:event_txtCorreoActionPerformed
  
     private void cargarUniversidad(){
-        
-            try {
-                universidad = bd.allUniversidades();
-             
+        try {
+            universidad = bd.allUniversidades();
             this.cmbUniversidades.removeAllItems();
             for( Object obj :universidad){
                 cmbUniversidades.addItem(obj);
             }
-            
-            }
-                            
-        catch (ClassNotFoundException ex) {
-                Logger.getLogger(DiaInscripcion.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        catch (SQLException ex)
-        {
+        }catch (ClassNotFoundException ex) {
+            //Logger.getLogger(DiaInscripcion.class.getName()).log(Level.SEVERE, null, ex);
+        }catch (SQLException ex){
             //Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 private void cmdAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdAceptarActionPerformed
-guardar();
-
+    if( this.validar())
+        guardar();
 }//GEN-LAST:event_cmdAceptarActionPerformed
 
+private void cmdNuevaUniversidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdNuevaUniversidadActionPerformed
+    DiaUniversidad frm = new DiaUniversidad(null,true,bd);
+    frm.setVisible(true);
+    this.cargarUniversidad();
+}//GEN-LAST:event_cmdNuevaUniversidadActionPerformed
+
 private void cmbUniversidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbUniversidadesActionPerformed
- 
+    
 }//GEN-LAST:event_cmbUniversidadesActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox cmbTipo;
     private javax.swing.JComboBox cmbUniversidades;
     private javax.swing.JButton cmdAceptar;
+    private javax.swing.JButton cmdNuevaUniversidad;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;

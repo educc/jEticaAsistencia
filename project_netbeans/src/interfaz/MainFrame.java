@@ -13,8 +13,6 @@ package interfaz;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.UIManager;
 import logica.Datosbd;
 import logica.Evento;
@@ -34,6 +32,9 @@ public class MainFrame extends javax.swing.JFrame {
         bd = new Datosbd();
         eventos = new ArrayList();
         this.cargarEventos();
+        this.lblCreditos.setText("Desarrollado por: " + 
+                App.DEVELOPERS + 
+                "... No fue desarrollador por Pilme Gates");
     }
     
     private void cargarEventos(){
@@ -60,16 +61,23 @@ public class MainFrame extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        jPanel1 = new javax.swing.JPanel();
         cmdInscribir = new javax.swing.JButton();
         cmdAsistencia = new javax.swing.JButton();
         cmbEventos = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        lblCreditos = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new java.awt.GridBagLayout());
+        setBackground(new java.awt.Color(204, 204, 255));
 
+        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel1.setLayout(new java.awt.GridBagLayout());
+
+        cmdInscribir.setFont(new java.awt.Font("Tahoma", 0, 18));
         cmdInscribir.setText("Inscribir al evento");
-        cmdInscribir.setPreferredSize(new java.awt.Dimension(200, 50));
+        cmdInscribir.setPreferredSize(new java.awt.Dimension(250, 50));
         cmdInscribir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmdInscribirActionPerformed(evt);
@@ -78,10 +86,12 @@ public class MainFrame extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
-        getContentPane().add(cmdInscribir, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        jPanel1.add(cmdInscribir, gridBagConstraints);
 
+        cmdAsistencia.setFont(new java.awt.Font("Tahoma", 0, 18));
         cmdAsistencia.setText("Registrar Asistencia");
-        cmdAsistencia.setPreferredSize(new java.awt.Dimension(200, 50));
+        cmdAsistencia.setPreferredSize(new java.awt.Dimension(250, 50));
         cmdAsistencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmdAsistenciaActionPerformed(evt);
@@ -90,9 +100,11 @@ public class MainFrame extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
-        getContentPane().add(cmdAsistencia, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        jPanel1.add(cmdAsistencia, gridBagConstraints);
 
-        cmbEventos.setPreferredSize(new java.awt.Dimension(200, 50));
+        cmbEventos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        cmbEventos.setPreferredSize(new java.awt.Dimension(250, 50));
         cmbEventos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbEventosActionPerformed(evt);
@@ -101,13 +113,32 @@ public class MainFrame extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        getContentPane().add(cmbEventos, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        jPanel1.add(cmbEventos, gridBagConstraints);
 
-        jLabel1.setText("Evento");
-        getContentPane().add(jLabel1, new java.awt.GridBagConstraints());
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 0, 0));
+        jLabel1.setText("EtiCA");
+        jPanel1.add(jLabel1, new java.awt.GridBagConstraints());
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/etica.png"))); // NOI18N
+        jLabel2.setToolTipText("");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        jPanel1.add(jLabel2, gridBagConstraints);
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
+
+        lblCreditos.setBackground(new java.awt.Color(51, 204, 0));
+        lblCreditos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblCreditos.setText("No fue desarrollado por Pilmee Gates");
+        lblCreditos.setOpaque(true);
+        getContentPane().add(lblCreditos, java.awt.BorderLayout.SOUTH);
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-416)/2, (screenSize.height-338)/2, 416, 338);
+        setBounds((screenSize.width-634)/2, (screenSize.height-338)/2, 634, 338);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmdAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdAsistenciaActionPerformed
@@ -146,5 +177,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton cmdAsistencia;
     private javax.swing.JButton cmdInscribir;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblCreditos;
     // End of variables declaration//GEN-END:variables
 }

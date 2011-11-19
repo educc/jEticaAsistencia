@@ -54,27 +54,113 @@ public class DiaAsistencia extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        txtDni = new javax.swing.JTextField();
-        cmbInscripciones = new javax.swing.JComboBox();
-        jLabel2 = new javax.swing.JLabel();
-        lblAviso = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        lblNombres = new javax.swing.JLabel();
         txtGuardar = new javax.swing.JButton();
         txtImporte = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         chkCancelado = new javax.swing.JCheckBox();
+        lblAviso = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        cmbInscripciones = new javax.swing.JComboBox();
+        txtDni = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        lblNombres = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Asistente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, new java.awt.Color(0, 0, 255)));
+        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        jLabel1.setText("Ducumento de Identidad:");
+        txtGuardar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        txtGuardar.setText("Guardar");
+        txtGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtGuardarActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 66;
+        gridBagConstraints.ipady = 21;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 0, 0, 0);
+        jPanel1.add(txtGuardar, gridBagConstraints);
 
+        txtImporte.setEditable(false);
+        txtImporte.setFont(new java.awt.Font("Tahoma", 1, 18));
+        txtImporte.setForeground(new java.awt.Color(204, 51, 0));
+        txtImporte.setText("S/");
+        txtImporte.setPreferredSize(new java.awt.Dimension(100, 30));
+        txtImporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtImporteActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 0);
+        jPanel1.add(txtImporte, gridBagConstraints);
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14));
+        jLabel8.setText("Importe :");
+        jLabel8.setToolTipText("");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        jPanel1.add(jLabel8, gridBagConstraints);
+
+        chkCancelado.setBackground(new java.awt.Color(204, 255, 204));
+        chkCancelado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        chkCancelado.setText("Cancelado");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 0);
+        jPanel1.add(chkCancelado, gridBagConstraints);
+
+        lblAviso.setBackground(new java.awt.Color(204, 255, 204));
+        lblAviso.setForeground(new java.awt.Color(51, 51, 51));
+        lblAviso.setOpaque(true);
+        lblAviso.setPreferredSize(new java.awt.Dimension(40, 30));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
+        jPanel1.add(lblAviso, gridBagConstraints);
+
+        jLabel2.setText("Inscripciones :");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        jPanel1.add(jLabel2, gridBagConstraints);
+
+        cmbInscripciones.setPreferredSize(new java.awt.Dimension(250, 30));
+        cmbInscripciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbInscripcionesActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 0);
+        jPanel1.add(cmbInscripciones, gridBagConstraints);
+
+        txtDni.setPreferredSize(new java.awt.Dimension(250, 30));
         txtDni.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDniActionPerformed(evt);
@@ -85,129 +171,40 @@ public class DiaAsistencia extends javax.swing.JDialog {
                 txtDniKeyReleased(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 0);
+        jPanel1.add(txtDni, gridBagConstraints);
 
-        cmbInscripciones.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbInscripcionesActionPerformed(evt);
-            }
-        });
+        jLabel1.setText("DNI:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(6, 10, 0, 0);
+        jPanel1.add(jLabel1, gridBagConstraints);
 
-        jLabel2.setText("Inscripciones :");
-
-        lblAviso.setForeground(new java.awt.Color(51, 51, 51));
-        lblAviso.setOpaque(true);
+        lblNombres.setFont(new java.awt.Font("Tahoma", 1, 12));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 0);
+        jPanel1.add(lblNombres, gridBagConstraints);
 
         jLabel3.setText("Nombre Completo :");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        jPanel1.add(jLabel3, gridBagConstraints);
 
-        lblNombres.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(txtDni, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGap(27, 27, 27)
-                .addComponent(lblAviso, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNombres, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(cmbInscripciones, 0, 265, Short.MAX_VALUE)
-                        .addComponent(jLabel2)))
-                .addGap(18, 18, 18))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbInscripciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblAviso, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
-
-        txtGuardar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        txtGuardar.setText("Guardar");
-        txtGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtGuardarActionPerformed(evt);
-            }
-        });
-
-        txtImporte.setEditable(false);
-        txtImporte.setFont(new java.awt.Font("Tahoma", 1, 18));
-        txtImporte.setForeground(new java.awt.Color(204, 51, 0));
-        txtImporte.setText("S/");
-        txtImporte.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtImporteActionPerformed(evt);
-            }
-        });
-
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14));
-        jLabel8.setText("Importe :");
-
-        chkCancelado.setFont(new java.awt.Font("Tahoma", 1, 14));
-        chkCancelado.setText("Cancelado");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addComponent(chkCancelado)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtImporte, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(179, Short.MAX_VALUE)
-                .addComponent(txtGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(177, 177, 177))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtImporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
-                    .addComponent(chkCancelado))
-                .addGap(18, 18, 18)
-                .addComponent(txtGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56))
-        );
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-545)/2, (screenSize.height-306)/2, 545, 306);
+        setBounds((screenSize.width-478)/2, (screenSize.height-311)/2, 478, 311);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cargarListaInscripciones(){
