@@ -12,14 +12,21 @@ import logica.Universidad;
 public class DiaInscripcion extends javax.swing.JDialog {
     private Datosbd bd;
     private List<Universidad> universidad;
-    /** Creates new form DiaInscripcion */
+    private Asistente asistente;
+    private int tipoGuardado;
+    
+    private static final int NUEVO = 1;
+    private static final int ACTUALIZAR = 2;
+    
     public DiaInscripcion( JFrame parent, Datosbd bdx) {
         super(parent);
         initComponents();
         this.setTitle( App.NAME );
         bd = bdx;
         universidad = new ArrayList();
+        asistente = null;
         this.cargarUniversidad();
+        tipoGuardado = NUEVO;
     }
     
     private boolean validar(){
@@ -36,38 +43,91 @@ public class DiaInscripcion extends javax.swing.JDialog {
         }
         return correcto;
     }
+    
+    private void cargarDatos(){
+        if( asistente != null){
+            txtNombre.setText( asistente.getNombres() );
+            txtApellidos.setText( asistente.getApellidos() );
+            txtCorreo.setText( asistente.getApellidos() );
+            Universidad u = asistente.getUniversidad();
+            System.out.println(u);
+            int index = buscarUniversidad(u) ;
+            if( index != -1){
+                cmbUniversidades.setSelectedIndex(index);
+            }
+            
+            if( asistente.getTipo().equalsIgnoreCase("p")){
+                cmbTipo.setSelectedIndex(1);
+            }else{
+                cmbTipo.setSelectedIndex(0);
+            }
+        }
+    }
+    
+    private int buscarUniversidad(Universidad u){
+        int i, index;
+        index = -1;
+        for(i = 0; i < universidad.size() && index == -1; i++){
+            Universidad aux = (Universidad) cmbUniversidades.getItemAt(i);
+            if ( aux.getId() == u.getId() ){
+                index = i;
+            }
+        }
+        return index;
+    }
+    
+    private void reiniciarDatos(){
+        txtNombre.setText("");
+        txtApellidos.setText("");
+        txtCorreo.setText("");
+        cmbTipo.setSelectedIndex(0);
+        cmbUniversidades.setSelectedIndex(0);
+    }
+    
+    private Asistente buscarAsistente (String dni)
+    {
+        Asistente asis = null;
+        try {
+            asis = bd.indexOfAsistente(dni);
+        } catch (ClassNotFoundException ex) {
+           JOptionPane.showMessageDialog(this,ex.getMessage(),
+                       App.NAME , JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this,ex.getMessage(),
+                       App.NAME , JOptionPane.INFORMATION_MESSAGE);
+        }
+        return asis;
+    }
   
     private void guardar()
     {
-        String dni = "" ,nombre = "",apellidos = "",correo= "",tipo = "";
-        Universidad   uni;
-         dni = txtDni.getText();
-         nombre = txtNombre.getText();
-         apellidos = txtApellidos.getText();
-         correo = txtCorreo.getText();
+         String tipo = "";
          tipo += cmbTipo.getSelectedItem().toString().charAt(0);
-         uni =  (Universidad) cmbUniversidades.getSelectedItem();
+         Universidad uni =  (Universidad) cmbUniversidades.getSelectedItem();
          
-      Asistente asistente = new Asistente();   
-         asistente.setDni(dni);
-         asistente.setNombres(nombre);
-         asistente.setApellidos(apellidos);
-         asistente.setCorreo(correo);
+         if( tipoGuardado == NUEVO)
+            asistente = new Asistente();   
+         
+         asistente.setDni( txtDni.getText() );
+         asistente.setNombres(txtNombre.getText());
+         asistente.setApellidos(txtApellidos.getText());
+         asistente.setCorreo(txtCorreo.getText());
          asistente.setTipo(tipo);
          asistente.setUniversidad(uni);
+         
         try {
-            bd.addAsistente(asistente);
+            if( tipoGuardado == ACTUALIZAR){
+                bd.updateAsistente(asistente);
+            }else{
+                bd.addAsistente(asistente);    
+            }
             JOptionPane.showMessageDialog(this,"Inscripcion Existosa",App.NAME 
                     , JOptionPane.INFORMATION_MESSAGE);
             this.dispose();
-        }
-        catch (ClassNotFoundException ex)
-        {
+        }catch (ClassNotFoundException ex){
            JOptionPane.showMessageDialog(this, ex.getMessage(),
                    App.NAME,JOptionPane.ERROR_MESSAGE);
-        } 
-        catch (SQLException ex) 
-        {
+        }catch (SQLException ex) {
            JOptionPane.showMessageDialog(this, ex.getMessage() ,
                   App.NAME,JOptionPane.ERROR_MESSAGE);
         }
@@ -121,6 +181,11 @@ public class DiaInscripcion extends javax.swing.JDialog {
         jPanel1.add(jLabel6, gridBagConstraints);
 
         txtDni.setPreferredSize(new java.awt.Dimension(200, 30));
+        txtDni.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtDniKeyReleased(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -244,6 +309,17 @@ private void cmdNuevaUniversidadActionPerformed(java.awt.event.ActionEvent evt) 
 private void cmbUniversidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbUniversidadesActionPerformed
     
 }//GEN-LAST:event_cmbUniversidadesActionPerformed
+
+private void txtDniKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDniKeyReleased
+    asistente = this.buscarAsistente( txtDni.getText() );
+    if( asistente != null){
+        this.cargarDatos();
+        tipoGuardado = ACTUALIZAR;
+    }else{
+        tipoGuardado = NUEVO;
+        this.reiniciarDatos();
+    }
+}//GEN-LAST:event_txtDniKeyReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox cmbTipo;

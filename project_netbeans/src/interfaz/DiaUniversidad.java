@@ -11,11 +11,7 @@
 package interfaz;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import logica.Datosbd;
 import logica.Universidad;
@@ -32,7 +28,7 @@ public class DiaUniversidad extends javax.swing.JDialog {
         initComponents();
         this.setTitle( App.NAME);
         bd = x;
-        this.cargarDepartamentos();
+        cargarDepartamentos();
     }
     
     public boolean verificar(){

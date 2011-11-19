@@ -26,6 +26,32 @@ public class Datosbd {
         bd = new Conexiondb(host,puerto,nombrebd,user,pass, Conexiondb.MYSQL);
     }
     
+    public Universidad indexOfUniversidad(int id) 
+            throws ClassNotFoundException, SQLException
+    {
+        Universidad uni = new Universidad();
+        
+        String strsql;
+        String[] parametros = new String[1];
+        
+        strsql = "SELECT id_uni, nombre_uni, sigla_uni,region_uni " +
+                " FROM universidad WHERE id_uni=?";
+        parametros[0] = String.valueOf(id);
+                
+        strsql = SQLString.toquery(strsql, parametros);
+        ResultSet rs = bd.conectarConsultar(strsql);
+        if ( rs.next() ){
+            uni.setId(id);
+            uni.setNombre( rs.getString("nombre_uni"));
+            uni.setSigla( rs.getString("sigla_uni"));
+            uni.setRegion( rs.getString( "region_uni" ));
+        }else{
+            uni = null;
+        }
+        bd.cerrarConexion();
+        return uni;
+    }
+    
     public Asistente indexOfAsistente(String dni) throws ClassNotFoundException, SQLException{
         Asistente asis = new Asistente();
         
@@ -33,7 +59,7 @@ public class Datosbd {
         String[] parametros = new String[1];
         
         strsql = "SELECT dni_asi, fechaRegistro_asi, nombres_asi, " +
-                " apellidos_asi, correo_asi, tipo_asi " +
+                " apellidos_asi, correo_asi, tipo_asi, id_uni " +
                 " FROM asistente WHERE dni_asi like '?'";
         parametros[0] = dni;
                 
@@ -46,6 +72,11 @@ public class Datosbd {
             asis.setApellidos( rs.getString("apellidos_asi"));
             asis.setCorreo( rs.getString( "correo_asi"));
             asis.setTipo( rs.getString("tipo_asi"));
+            
+            int iduni = rs.getInt("id_uni");
+            Universidad uni = this.indexOfUniversidad(iduni);
+            
+            asis.setUniversidad(uni);
         }else{
             asis = null;
         }
@@ -99,6 +130,29 @@ public class Datosbd {
         parametros[4] = asis.getTipo();
         parametros[5] = String.valueOf( asis.getUniversidad().getId() );
         
+        
+        strsql = SQLString.toquery(strsql, parametros);
+        bd.conectarEjecutar(strsql);
+    }
+    
+    public void updateAsistente(Asistente asis)
+        throws ClassNotFoundException, SQLException
+    {
+        String strsql;
+        String[] parametros = new String[6];
+        
+        strsql = "UPDATE asistente SET " +
+                " nombres_asi='?', " +
+                " apellidos_asi='?', correo_asi='?', tipo_asi='?', " +
+                " id_uni=? " +
+                " WHERE dni_asi=?";
+        
+        parametros[0] = asis.getNombres();
+        parametros[1] = asis.getApellidos();
+        parametros[2] = asis.getCorreo();
+        parametros[3] = asis.getTipo();
+        parametros[4] = String.valueOf( asis.getUniversidad().getId() );
+        parametros[5] = asis.getDni();
         
         strsql = SQLString.toquery(strsql, parametros);
         bd.conectarEjecutar(strsql);
