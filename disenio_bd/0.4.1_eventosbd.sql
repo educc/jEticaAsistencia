@@ -112,11 +112,11 @@ create table taller
 
 create table asistencia_taller
 (
-	id_taller int 			not null references taller(id_taller),
+	id_tal int 			not null references taller(id_taller),
 	dni_asi	int 			not null references asistente(id_asi),	
 	hora_detasi			time not null, -- default current_time(),
 	certificado_detasi		bit not null,	
-	primary key (id_taller, dni_asi)
+	primary key (id_tal, dni_asi)
 );
 
 
@@ -128,6 +128,7 @@ create table asistencia_taller
 	INSERCIONES
 */
 
+INSERT INTO universidad(nombre_uni,sigla_uni,region_uni) VALUES('Desconocido','','');
 INSERT INTO universidad(nombre_uni,sigla_uni,region_uni) VALUES('Universidad de Chiclayo','UDCH','Lambayeque');
 INSERT INTO universidad(nombre_uni,sigla_uni,region_uni) VALUES('Nacional Pedro Ruiz Gallo','UNPRG','Lambayeque');
 INSERT INTO universidad(nombre_uni,sigla_uni,region_uni) VALUES('Católica Santo Toribio de Mogrovejo','USAT','Lambayeque');
