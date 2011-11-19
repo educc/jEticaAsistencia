@@ -17,6 +17,7 @@ public class Asistente {
     private String correo;
     private String tipo;
     private Date fechaRegistro;
+    private Universidad universidad;
 
     public Asistente() {
         dni = "";
@@ -25,6 +26,32 @@ public class Asistente {
         correo = "";
         tipo = "a";
         fechaRegistro = new Date("1/1/1");
+        universidad = new Universidad();
+        
+    }
+
+    public Asistente(
+            String dni, String nombres, String apellidos, 
+            String correo, String tipo, Date fechaRegistro,
+            Universidad universidad) 
+    {
+        this.dni = dni;
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+        this.correo = correo;
+        this.tipo = tipo;
+        this.fechaRegistro = fechaRegistro;
+        this.universidad = universidad;
+    }
+    
+    
+
+    public Universidad getUniversidad() {
+        return universidad;
+    }
+
+    public void setUniversidad(Universidad universidad) {
+        this.universidad = universidad;
     }
 
     public Asistente(String nombres, String apellidos, 
@@ -83,5 +110,10 @@ public class Asistente {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    @Override
+    public String toString() {
+        return nombres;
     }
 }

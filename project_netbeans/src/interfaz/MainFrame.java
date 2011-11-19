@@ -70,6 +70,11 @@ public class MainFrame extends javax.swing.JFrame {
 
         cmdInscribir.setText("Inscribir al evento");
         cmdInscribir.setPreferredSize(new java.awt.Dimension(200, 50));
+        cmdInscribir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdInscribirActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -87,8 +92,12 @@ public class MainFrame extends javax.swing.JFrame {
         gridBagConstraints.gridy = 3;
         getContentPane().add(cmdAsistencia, gridBagConstraints);
 
-        cmbEventos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbEventos.setPreferredSize(new java.awt.Dimension(200, 50));
+        cmbEventos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbEventosActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -102,10 +111,21 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmdAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdAsistenciaActionPerformed
-        DiaAsistencia frm = new DiaAsistencia(this, bd);
+        Evento e = (Evento) cmbEventos.getSelectedItem();
+        DiaAsistencia frm = new DiaAsistencia(this, bd,e);
         frm.setModal(true);
         frm.setVisible(true);
     }//GEN-LAST:event_cmdAsistenciaActionPerformed
+
+    private void cmdInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdInscribirActionPerformed
+       DiaInscripcion frm1 = new DiaInscripcion(this, bd);
+       frm1.setModal(true);
+       frm1.setVisible(true);
+    }//GEN-LAST:event_cmdInscribirActionPerformed
+
+    private void cmbEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEventosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbEventosActionPerformed
 
     /**
      * @param args the command line arguments

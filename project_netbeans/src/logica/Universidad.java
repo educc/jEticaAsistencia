@@ -12,12 +12,21 @@ public class Universidad {
     private int id;
     private String nombre;
     private String region;
+    private String sigla;
 
     public Universidad() {
         this.id = -1;
         this.nombre = "";
         this.region = "";
-    }    
+    }
+
+    public String getSigla() {
+        return sigla;
+    }
+
+    public void setSigla(String sigla) {
+        this.sigla = sigla;
+    }
     
     public Universidad(int id, String nombre, String region) {
         this.id = id;
@@ -56,7 +65,9 @@ public class Universidad {
     public void setRegion(String region) {
         this.region = region;
     }
-    
-    
-           
+
+    @Override
+    public String toString() {
+        return nombre;
+    }
 }

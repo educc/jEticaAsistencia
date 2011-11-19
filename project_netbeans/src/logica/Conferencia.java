@@ -86,6 +86,11 @@ public class Conferencia {
     public void setVacantes(int vacantes) {
         this.vacantes = vacantes;
     }
+
+    @Override
+    public String toString() {
+        return tema;
+    }
     
     
 

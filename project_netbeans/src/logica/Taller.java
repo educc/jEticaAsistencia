@@ -101,6 +101,11 @@ public class Taller {
     public void setVacantes(int vacantes) {
         this.vacantes = vacantes;
     }
+
+    @Override
+    public String toString() {
+        return tema;
+    }
     
     
     

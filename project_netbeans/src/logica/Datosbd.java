@@ -26,7 +26,7 @@ public class Datosbd {
         bd = new Conexiondb(host,puerto,nombrebd,user,pass, Conexiondb.MYSQL);
     }
     
-    public Asistente indexOf(String dni) throws ClassNotFoundException, SQLException{
+    public Asistente indexOfAsistente(String dni) throws ClassNotFoundException, SQLException{
         Asistente asis = new Asistente();
         
         String strsql;
@@ -39,13 +39,15 @@ public class Datosbd {
                 
         strsql = SQLString.toquery(strsql, parametros);
         ResultSet rs = bd.conectarConsultar(strsql);
-        while( rs.next() ){
+        if ( rs.next() ){
             asis.setDni( rs.getString("dni_asi"));
             asis.setFechaRegistro( rs.getDate("fechaRegistro_asi"));
             asis.setNombres( rs.getString("nombres_asi"));
             asis.setApellidos( rs.getString("apellidos_asi"));
             asis.setCorreo( rs.getString( "correo_asi"));
             asis.setTipo( rs.getString("tipo_asi"));
+        }else{
+            asis = null;
         }
         bd.cerrarConexion();
         
@@ -83,17 +85,19 @@ public class Datosbd {
             throws ClassNotFoundException, SQLException
     {
         String strsql;
-        String[] parametros = new String[5];
+        String[] parametros = new String[6];
         
         strsql = "INSERT INTO asistente " +
-                " (dni_asi, nombres_asi, apellidos_asi, correo_asi, tipo_asi, fechaRegistro_asi) " +
-                " VALUES ('?','?','?','?','?', now() )";
+                " (dni_asi, nombres_asi, apellidos_asi, correo_asi, tipo_asi, " +
+                " fechaRegistro_asi, id_uni) " +
+                " VALUES ('?','?','?','?','?', now() , ?)";
         
         parametros[0] = asis.getDni();
         parametros[1] = asis.getNombres();
         parametros[2] = asis.getApellidos();
         parametros[3] = asis.getCorreo();
         parametros[4] = asis.getTipo();
+        parametros[5] = String.valueOf( asis.getUniversidad().getId() );
         
         
         strsql = SQLString.toquery(strsql, parametros);
@@ -165,7 +169,7 @@ public class Datosbd {
         strsql = "SELECT id_tal, tema_tal, fechaInicio_tal, fechaFin_tal," +
                  "aforo_tal, vacantes_tal,lugar_tal, costoEstudiante_tal, " +
                  "costoProfesional_tal " +
-                 "FROM conferencia WHERE id_eve=?";
+                 "FROM taller WHERE id_eve=?";
         parametros[0] = String.valueOf(e.getId());
         
         strsql = SQLString.toquery(strsql, parametros);
@@ -205,8 +209,9 @@ public class Datosbd {
         String strsql;
         String[] parametros = new String[3];
         
-        strsql = "INSERT INTO asistencia_conferencia(dni_asi,id_con, certificado_detasi) " +
-                 " VALUES('?', ?, ?)";
+        strsql = "INSERT INTO asistencia_conferencia(dni_asi,id_con, " +
+                 " certificado_detasi, hora_detasi) " +
+                 " VALUES('?', ?, ?, now() )";
         parametros[0] = asis.getDni();
         parametros[1] = String.valueOf( conf.getId() );
         parametros[2] = String.valueOf( certificado);
@@ -222,8 +227,9 @@ public class Datosbd {
         String strsql;
         String[] parametros = new String[3];
         
-        strsql = "INSERT INTO asistencia_taller(dni_asi,id_tal, certificado_detasi) " +
-                 " VALUES('?', ?, ?)";
+        strsql = "INSERT INTO asistencia_taller(dni_asi,id_tal, " +
+                 " certificado_detasi, hora_detasi) " +
+                 " VALUES('?', ?, ?, now())";
         parametros[0] = asis.getDni();
         parametros[1] = String.valueOf( tal.getId() );
         parametros[2] = String.valueOf( certificado);
@@ -232,14 +238,47 @@ public class Datosbd {
         bd.conectarEjecutar(strsql);
     } 
     
+    public List<Universidad> allUniversidades() 
+            throws SQLException, ClassNotFoundException
+    {
+        List<Universidad> lista = new ArrayList();
+        String strsql;
+        
+        strsql = "SELECT id_uni, nombre_uni, sigla_uni, region_uni " +
+                 "FROM universidad";
+        ResultSet rs = bd.conectarConsultar(strsql);
+        while ( rs.next() ){
+            Universidad u = new Universidad();
+            u.setNombre( rs.getString("nombre_uni"));
+            u.setId( rs.getInt("id_uni"));
+            u.setSigla( rs.getString("sigla_uni"));
+            u.setRegion( rs.getString("region_uni") );
+            lista.add(u);
+        }
+        bd.cerrarConexion();
+        return lista;
+    }
+    
     public static void main(String[] args) throws SQLException, ClassNotFoundException{
         Datosbd db = new Datosbd();
         /*Universidad u = new Universidad("USAT", "LAMBAYEQUE");
-        db.addUniversidad(u);*/
-        List<Evento> list = db.allEventos();
+        db.addUniversidad(u);
+        List<Universidad> list = db.allUniversidades();
         for( Object obj: list){
             System.out.println(obj);
         }
+        Asistente a = new Asistente();
+        Universidad u = new Universidad();
+        u.setId(1);
+        a.setNombres("ed");
+        a.setCorreo("abc");
+        a.setDni("12345678");
+        a.setTipo("a");
+        a.setUniversidad(u);
+        
+        db.addAsistente(a);*/
+        Object a = new Asistente();
+        System.out.println( a.getClass().getName());
     }
 }
 
